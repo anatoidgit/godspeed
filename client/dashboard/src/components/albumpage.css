@@ -1,0 +1,486 @@
+.album-list-section {
+  padding: 60px 40px 20px;
+  color: white;
+}
+
+.album-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Top row: cover + info */
+.album-header-block {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.album-cover {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+.album-info-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.album-info-block h2 {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+}
+
+.album-info-block p {
+  margin: 0 0 16px 0;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.album-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.album-actions button {
+  background-color: rgba(255,255,255,0.08);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.album-actions button:hover {
+  background-color: rgba(255,255,255,0.15);
+}
+
+.lastfm-icon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.lastfm-icon:hover {
+  transform: scale(1.15);
+}
+
+/* Track Table Styling */
+.tracks-table {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tracks-header,
+.tracks-row {
+  display: grid;
+  grid-template-columns:
+    32px                   /* Number */
+    minmax(80px, 1fr)      /* Title */
+    minmax(0, 300px)       /* Grouped meta (Duration, Size, etc.) */
+    32px;                  /* Options */
+  align-items: center;
+  padding: 12px 16px;
+  font-size: 1rem;
+  column-gap: 8px;
+}
+
+.meta-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.meta-group div {
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tracks-row > div,
+.tracks-header > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tracks-header {
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.tracks-row {
+  border-top: 1px solid transparent;
+  position: relative;
+}
+
+.tracks-row::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.2), transparent);
+}
+
+.tracks-row:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.tracks-row:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+}
+
+.tracks-row.playing {
+  background-color: rgba(58, 74, 107, 0.4);
+}
+
+.more-options {
+  text-align: center;
+  cursor: pointer;
+}
+
+.album-meta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.album-meta-row p {
+  margin: 0;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+.album-meta-row .lastfm-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.album-meta-row .lastfm-icon:hover {
+  transform: scale(1.15);
+}
+
+.more-options-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.2s ease;
+  border-radius: 6px;
+}
+
+.more-options-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Labels */
+.album-labels {
+  margin-top: -8px;
+  margin-bottom: 12px;
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.labels-header {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #ccc;
+}
+
+.label-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.label-tag {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.label-tag:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.label-placeholder {
+  color: #888;
+  font-size: 0.8rem;
+  font-style: italic;
+  padding: 4px 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+}
+
+.label-input {
+  width: 60%;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: white;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.label-input::placeholder {
+  color: #aaa;
+}
+
+.label-input:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.12);
+  outline: none;
+}
+
+.label-delete-button {
+  background: none;
+  border: none;
+  color: #ddd;
+  font-size: 0.7rem;
+  margin-left: 6px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.label-delete-button:hover {
+  color: #ff4d4d;
+}
+
+/* Dropdown */
+.track-dropdown-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.track-dropdown-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.track-dropdown-menu {
+  border-radius: 8px;
+  padding: 6px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 1000;
+  min-width: 50px;
+  max-width: 120px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.track-dropdown-icon {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.track-dropdown-icon:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.track-info-tooltip {
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  margin-right: 8px;
+  color: white;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1010;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+}
+
+.track-info-tooltip table {
+  width: max-content;
+}
+
+.track-info-tooltip td {
+  padding: 2px 6px;
+}
+
+.label-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.track-label-input {
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  margin-right: 6px;
+  width: 140px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.08);
+  color: white;
+  transition: border-color 0.2s, background-color 0.2s;
+  backdrop-filter: blur(6px);
+  z-index: 1010;
+}
+
+.track-label-input::placeholder {
+  color: #aaa;
+}
+
+.track-label-input:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.12);
+  outline: none;
+}
+
+.label-popup {
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  margin-right: 2px;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  z-index: 1010;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 160px;
+}
+
+.label-popup .label-tags-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.label-popup .label-tag-inline {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.label-popup .label-tag-inline:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.label-popup .track-label-input {
+  all: unset;
+  padding: 8px 12px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  width: 85%;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.label-popup .track-label-input:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.label-popup .track-label-input::placeholder {
+  color: #aaa;
+}
+
+/* Goto */
+.clickable-year-albumpage,
+.clickable-artist-albumpage {
+  cursor: pointer;
+}
+
+.clickable-year-albumpage:hover,
+.clickable-artist-albumpage:hover {
+  color: #fff;
+}

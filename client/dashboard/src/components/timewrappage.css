@@ -1,0 +1,136 @@
+.timewrap-main-content {
+  padding: 60px 40px 20px;
+  color: white;
+  min-height: calc(100vh - 80px); /* Account for footer */
+}
+
+.timewrap-main-content.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff4d4d; /* Red for error messages */
+  font-size: 1.2rem;
+}
+
+.timewrap-main-content p {
+  text-align: center;
+  font-size: 1rem;
+  opacity: 0.7;
+  margin: 20px 0;
+}
+
+.timewrap-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+}
+
+.timewrap-search-bar {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: white;
+  outline: none;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.timewrap-search-bar:focus {
+  background-color: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.timewrap-date-block {
+  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.timewrap-date-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.07);
+  padding: 14px 22px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.timewrap-date-header:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.timewrap-date-header.expanded {
+  background-color: rgba(100, 140, 180, 0.25);
+}
+
+.timewrap-track-list {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.timewrap-track-row {
+  display: grid;
+  grid-template-columns: 80px 2fr 1fr 1fr 80px; /* Played-at, title, artist, album, time */
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.timewrap-track-row:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.timewrap-track-row.playing {
+  background-color: rgba(30, 144, 255, 0.2);
+}
+
+.tw-cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.tw-cell.played-at {
+  min-width: 60px;
+  text-align: right;
+  color: #aaa;
+}
+
+.tw-cell.title {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.tw-cell.artist,
+.tw-cell.album,
+.tw-cell.time {
+  text-align: center;
+  opacity: 0.8;
+  color: #ddd;
+}
+
+.tw-cell.clickable {
+  cursor: pointer;
+}
+
+.tw-cell.clickable:hover {
+  opacity: 1;
+  color: #ffffff;
+}
+
+.tw-cell.time {
+  font-weight: 500;
+}

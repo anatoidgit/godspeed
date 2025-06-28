@@ -1,0 +1,331 @@
+* {
+  box-sizing: border-box;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: #1a1a2e;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  transition: width 0.3s ease;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sort-controls {
+  display: flex;
+  gap: 10px;
+  position: relative;
+  width: 100%;
+}
+
+#showAllBtn {
+  flex: 1;
+  padding: 10px 14px;
+  background-color: rgba(255, 255, 255, 0.07);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+#sortBtn {
+  padding: 10px 12px;
+  width: 100%;
+  display: block;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, transform 0.1s ease;
+  text-align: center;
+}
+
+#scanBtn {
+  padding: 10px 12px;
+  width: 100%;
+  display: block;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, transform 0.1s ease;
+  text-align: left;
+}
+
+#showAllBtn:hover,
+#sortBtn:hover,
+#scanBtn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  transform: scale(1.03);
+}
+
+#logo {
+  font-size: 22px;
+  margin: 0;
+  transition: opacity 0.3s ease;
+}
+
+.navi-block {
+  display: flex;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.04);
+  height: 38px;
+}
+
+/* Expanded (default): 3 buttons */
+.sidebar .navi-block {
+  width: 96px;
+}
+
+.sidebar:not(.collapsed) .navi-block {
+  margin-left: 8px; /* Only apply when expanded */
+}
+
+/* Collapsed: only center button */
+.sidebar.collapsed .navi-block {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  justify-content: center;
+}
+
+.navi-block button {
+  flex: 1;
+  padding: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.navi-block button:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+}
+
+#toggleSidebar {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+#toggleSidebar:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+.nav-controls {
+  display: flex;
+}
+
+.nav-controls button {
+  background: none;
+  border: none;
+  color: white;
+  padding: 4px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.nav-controls button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar input {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.sidebar input[type="text"] {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  outline: none;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.sidebar input[type="text"]:focus {
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: rgba(255,255,255,0.05);
+  border: none;
+  color: white;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #2a2a40;
+  border-radius: 6px;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.dropdown-menu button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: none;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dropdown-menu button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.category-block {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.category {
+  padding: 10px;
+  border-radius: 8px;
+  background: none;
+  color: white;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.category:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.02);
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+/* sort menu */
+
+#sortMenu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px); /* Appears just below sort button with 4px gap */
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  z-index: 100;
+  min-width: 100%; /* Match the button width */
+  backdrop-filter: blur(6px);
+}
+
+#sortMenu button {
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#sortMenu button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sort-dropdown-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Show on hover of wrapper */
+.sort-dropdown-wrapper:hover #sortMenu {
+  display: block;
+}
+
+.sidebar.collapsed {
+  width: 40px;
+  padding: 20px 6px;
+  align-items: center;
+}
+
+.sidebar.collapsed .sidebar-header {
+  justify-content: center;
+}
+
+.sidebar.collapsed #logo,
+.sidebar.collapsed input,
+.sidebar.collapsed .sort-controls,
+.sidebar.collapsed .category-block,
+.sidebar.collapsed .nav-controls {
+  display: none;
+}

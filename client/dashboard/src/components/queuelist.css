@@ -1,0 +1,237 @@
+.queue-list-section {
+  position: fixed;
+  bottom: 120px;
+  right: 20px;
+  width: 520px;
+  max-height: calc(100vh - 150px);
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  font-size: 0.95rem;
+  color: white;
+  overflow: hidden;
+}
+
+.queue-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.queue-header {
+  display: grid;
+  grid-template-columns: 2.5fr 1.8fr 1.8fr 0.7fr;
+  padding: 14px 20px;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.queue-list {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.queue-list::-webkit-scrollbar {
+  display: none;
+}
+
+.queue-row {
+  display: grid;
+  grid-template-columns: 2.5fr 1.8fr 1.8fr 0.7fr;
+  padding: 12px 20px;
+  align-items: center;
+  transition: background-color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+  position: relative;
+  cursor: move;
+}
+
+.queue-row[draggable="true"] {
+  cursor: move;
+}
+
+.queue-row.dragging {
+  opacity: 0.6;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(0.98);
+}
+
+.queue-row.drag-over {
+  background-color: rgba(58, 74, 107, 0.6);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  transform: translateY(2px);
+}
+
+.queue-row:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.015);
+}
+
+.queue-row:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+.queue-row.active {
+  background-color: rgba(58, 74, 107, 0.4);
+  color: white;
+  z-index: 1;
+}
+
+.queue-row::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.08), transparent);
+}
+
+.queue-cell {
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.queue-cell-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.queue-cell-content {
+  display: inline-block;
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+}
+
+.remove-track-button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8em;
+  cursor: pointer;
+  padding: 0 4px;
+  margin-left: 8px;
+  position: relative;
+  z-index: 10;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.queue-row:hover .remove-track-button {
+  opacity: 1;
+}
+
+.remove-track-button:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.queue-empty {
+  padding: 32px 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+}
+
+/* === Grouping === */
+.queue-group {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.queue-group-header {
+  display: grid;
+  grid-template-columns: 2.5fr 1.8fr 1.8fr 0.7fr;
+  padding: 12px 20px;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.06);
+  transition: background-color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+  align-items: center;
+  cursor: move;
+}
+
+.queue-group-header[draggable="true"] {
+  cursor: move;
+}
+
+.queue-group-header.dragging {
+  opacity: 0.6;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(0.98);
+}
+
+.queue-group-header.drag-over {
+  background-color: rgba(58, 74, 107, 0.6);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  transform: translateY(2px);
+}
+
+.queue-group-header:hover {
+  background-color: rgba(255, 255, 255, 0.09);
+}
+
+.queue-group-header.active {
+  background-color: rgba(58, 74, 107, 0.4);
+  color: white;
+}
+
+.queue-group-header:empty::after {
+  content: "Empty Album";
+  opacity: 0.6;
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
+.grouped-track {
+  background-color: rgba(255, 255, 255, 0.025);
+  border-left: 3px solid rgba(255, 255, 255, 0.1);
+  padding-left: 17px;
+}
+
+.grouped-track:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+.queue-row.active.grouped-track {
+  background-color: rgba(58, 74, 107, 0.4);
+}
+
+.expand-toggle {
+  justify-self: end;
+  opacity: 0.6;
+  font-size: 0.9em;
+  margin-left: auto;
+  text-align: right;
+}
+
+/* Unknown metadata fallback */
+.queue-group-header strong:empty::before {
+  content: "Unknown Album";
+  opacity: 0.6;
+}
+
+.queue-group-header:has(strong:empty)::after {
+  content: " by Unknown Artist";
+  opacity: 0.6;
+}
+
+.queue-group:not(:has(.queue-group-header)) .queue-row {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Mobile: avoid overlaying collapsed sidebar */
+@media (max-width: 640px) {
+  .queue-list-section {
+    width: calc(95vw - 40px);
+    right: 2.5vw;
+  }
+}

@@ -1,0 +1,60 @@
+.artists-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.artists-header,
+.artist-row {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr;
+  padding: 16px;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.artists-header {
+  font-weight: bold;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.07);
+  user-select: none;
+}
+
+.artist-row {
+  border-top: 1px solid transparent;
+  position: relative;
+}
+
+.artist-row::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.2), transparent);
+}
+
+.artist-row:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.artist-row:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+}
+
+
+
+body.collapsed .back-link {
+  left: 80px;
+}
+
+.artist-list-section {
+  padding: 60px 40px 20px;
+  color: white;
+}

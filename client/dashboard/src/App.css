@@ -1,0 +1,23 @@
+.app-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #1e1e2f, #121212);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  color: white;
+}
+
+/* Text truncation for long titles */
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

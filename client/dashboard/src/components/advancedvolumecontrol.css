@@ -1,0 +1,158 @@
+.volume-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.04);
+  gap: 4px;
+  color: white;
+  font-family: sans-serif;
+  max-width: 220px; /* Limit width to reduce outer space */
+  margin: 0 auto; /* Center the container */
+}
+
+.slider-group {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.slider-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 42px;
+  gap: 2px;
+}
+
+.slider-column label {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
+.vertical-slider {
+  transform: rotate(270deg);
+  height: 80px;
+  width: 20px;
+  margin: 0;
+  cursor: pointer;
+  background: transparent;
+}
+
+.value-readout {
+  font-size: 12px;
+  color: #ccc;
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  white-space: nowrap;
+  border-radius: 4px;
+}
+
+.value-readout:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.pan-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 2px;
+  margin-bottom: 2px;
+}
+
+.pan-label-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #ccc;
+  margin: 0;
+  padding: 0;
+}
+
+.pan-label-row label {
+  font-weight: 500;
+  font-size: 12px;
+  margin: 0;
+}
+
+.pan-readout {
+  font-size: 12px;
+  user-select: none;
+}
+
+.pan-control input[type="range"] {
+  width: 80%;
+  margin: 0;
+}
+
+.volume-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-top: 0;
+  width: 100%; /* Ensure buttons stretch to container width */
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px; /* Slightly increased gap for balance */
+  flex-wrap: nowrap;
+  width: 100%; /* Ensure button row takes full container width */
+}
+
+.mono-toggle,
+.mute-toggle,
+.eq-button,
+.replay-gain-toggle {
+  padding: 4px 12px; /* Increased horizontal padding for wider buttons */
+  font-size: 12px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.07);
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  white-space: nowrap;
+  min-width: 70px; /* Increased min-width for wider buttons */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.replay-gain-toggle {
+  padding: 4px 12px; /* Match padding with other buttons */
+}
+
+.mono-toggle:hover,
+.mute-toggle:hover,
+.eq-button:hover,
+.replay-gain-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  transform: scale(1.02);
+}
+
+.mono-toggle.active,
+.mute-toggle.active,
+.replay-gain-toggle.active {
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}

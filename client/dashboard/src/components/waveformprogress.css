@@ -1,0 +1,26 @@
+.waveform-wrapper {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  overflow: hidden;
+}
+.waveform-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+  filter: grayscale(1) brightness(0.6);
+}
+.waveform-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+}
+.waveform-overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: none;
+}
