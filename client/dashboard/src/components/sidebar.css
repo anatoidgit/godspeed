@@ -329,3 +329,29 @@
 .sidebar.collapsed .nav-controls {
   display: none;
 }
+
+.collapsed-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* <--- this controls spacing between buttons */
+}
+
+.collapsed-menu button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+
+.collapsed-menu button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

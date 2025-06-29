@@ -1,8 +1,19 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { FaBars, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import AdvancedVolumeControl from "../components/AdvancedVolumeControl"; // adjust path if needed
 import "./sidebar.css";
+import {
+  FaBars,
+  FaArrowLeft,
+  FaArrowRight,
+  FaMusic,
+  FaMicrophone,
+  FaHeart,
+  FaSearch,
+  FaInfoCircle,
+  FaTags,
+} from "react-icons/fa";
+import { FiClock } from "react-icons/fi";
 
 function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
@@ -65,56 +76,57 @@ function Sidebar() {
         </div>
       </div>
 
+
       {collapsed ? (
         <div className="collapsed-menu">
           <button
-            className={`category ${isActive("/playlists") ? "active" : ""}`}
+            className={isActive("/playlists") ? "active" : ""}
             onClick={() => navigate("/playlists")}
             title="Playlists"
           >
-            📜
+            <FaMusic size={16} />
           </button>
           <button
-            className={`category ${isActive("/artists") ? "active" : ""}`}
+            className={isActive("/artists") ? "active" : ""}
             onClick={() => navigate("/artists")}
             title="Artists"
           >
-            🎤
+            <FaMicrophone size={16} />
           </button>
           <button
-            className={`category ${isActive("/timewrap") ? "active" : ""}`}
+            className={isActive("/timewrap") ? "active" : ""}
             onClick={() => navigate("/timewrap")}
             title="Timewrap"
           >
-            ⏰
+            <FiClock size={16} />
           </button>
           <button
-            className={`category ${isActive("/favorites") ? "active" : ""}`}
+            className={isActive("/favorites") ? "active" : ""}
             onClick={() => navigate("/favorites")}
             title="Favorites"
           >
-            ❤️
+            <FaHeart size={16} />
           </button>
           <button
-            className={`category ${isActive("/labels") ? "active" : ""}`}
+            className={isActive("/labels") ? "active" : ""}
             onClick={() => navigate("/labels")}
             title="Labels"
           >
-            🏷️
+            <FaTags size={16} />
           </button>
           <button
-            className={`category ${isActive("/scan") ? "active" : ""}`}
+            className={isActive("/scan") ? "active" : ""}
             onClick={() => navigate("/scan")}
             title="Scan"
           >
-            🔍
+            <FaSearch size={16} />
           </button>
           <button
-            className={`category ${isActive("/info") ? "active" : ""}`}
+            className={isActive("/info") ? "active" : ""}
             onClick={() => navigate("/info")}
             title="Info"
           >
-            ℹ️
+            <FaInfoCircle size={16} />
           </button>
         </div>
       ) : (
