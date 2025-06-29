@@ -14,4 +14,4 @@
 	- for transcribing purposes
 - Share feature (such as the one most file-browser-like containers provide)
 
-[![screenshot](https://imgur.com/a/p00ACj4 "screenshot")](https://imgur.com/a/p00ACj4 "screenshot")
+![Demo screenshot of the app interface](https://i.imgur.com/fAcLhEC.png)
