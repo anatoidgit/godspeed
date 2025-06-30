@@ -21,7 +21,7 @@ router.get('/playlists', async (req, res) => {
     res.json(playlists);
   } catch (error) {
     console.error('❌ Failed to fetch playlists:', error);
-    res.status(500).json({ error: 'Failed to fetch playlists' });
+    res.status(500).json({ error: 'Failed to fetch playlists', details: error.message });
   }
 });
 
@@ -72,7 +72,7 @@ router.get('/playlists/:id', async (req, res) => {
     });
   } catch (error) {
     console.error('❌ Failed to fetch playlist:', error);
-    res.status(500).json({ error: 'Failed to fetch playlist' });
+    res.status(500).json({ error: 'Failed to fetch playlist', details: error.message });
   }
 });
 
@@ -80,7 +80,7 @@ router.get('/playlists/:id', async (req, res) => {
 router.post('/playlists', async (req, res) => {
   const { name, description } = req.body;
   if (!name) {
-    return res.status(400).json({ error: 'Missing name' });
+    return res.status(400).json({ error: 'Missing playlist name' });
   }
   try {
     const result = await dbRun(
@@ -90,7 +90,13 @@ router.post('/playlists', async (req, res) => {
     res.json({ id: result.lastID, name, description });
   } catch (error) {
     console.error('❌ Failed to create playlist:', error);
-    res.status(500).json({ error: 'Failed to create playlist' });
+    let errorMessage = 'Failed to create playlist';
+    if (error.code === 'SQLITE_READONLY') {
+      errorMessage = 'Cannot write to database: read-only access';
+    } else if (error.code === 'SQLITE_CONSTRAINT') {
+      errorMessage = 'Playlist name may already exist or invalid';
+    }
+    res.status(500).json({ error: errorMessage, details: error.message });
   }
 });
 
@@ -99,7 +105,7 @@ router.put('/playlists/:id', async (req, res) => {
   const { id } = req.params;
   const { name, description } = req.body;
   if (!name) {
-    return res.status(400).json({ error: 'Missing name' });
+    return res.status(400).json({ error: 'Missing playlist name' });
   }
   try {
     await dbRun(
@@ -109,7 +115,7 @@ router.put('/playlists/:id', async (req, res) => {
     res.json({ success: true });
   } catch (error) {
     console.error('❌ Failed to update playlist:', error);
-    res.status(500).json({ error: 'Failed to update playlist' });
+    res.status(500).json({ error: 'Failed to update playlist', details: error.message });
   }
 });
 
@@ -134,7 +140,7 @@ router.delete('/playlists/:id', async (req, res) => {
     res.json({ success: true });
   } catch (error) {
     console.error('❌ Failed to delete playlist:', error);
-    res.status(500).json({ error: 'Failed to delete playlist' });
+    res.status(500).json({ error: 'Failed to delete playlist', details: error.message });
   }
 });
 
@@ -173,7 +179,7 @@ router.post('/playlist_tracks', async (req, res) => {
     res.json({ success: true, position: finalPosition });
   } catch (error) {
     console.error('❌ Failed to add track to playlist:', error);
-    res.status(500).json({ error: 'Failed to add track to playlist' });
+    res.status(500).json({ error: 'Failed to add track to playlist', details: error.message });
   }
 });
 
@@ -189,7 +195,7 @@ router.put('/playlist_tracks/:playlist_id/:track_id', async (req, res) => {
     res.json({ success: true });
   } catch (error) {
     console.error('❌ Failed to update track custom title:', error);
-    res.status(500).json({ error: 'Failed to update track custom title' });
+    res.status(500).json({ error: 'Failed to update track custom title', details: error.message });
   }
 });
 
@@ -232,7 +238,7 @@ router.delete('/playlist_tracks', async (req, res) => {
   } catch (error) {
     await dbRun(`ROLLBACK`, []);
     console.error('❌ Failed to remove track from playlist:', error);
-    res.status(500).json({ error: 'Failed to remove track from playlist' });
+    res.status(500).json({ error: 'Failed to remove track from playlist', details: error.message });
   }
 });
 
@@ -265,7 +271,7 @@ router.post('/playlists/:id/cover', async (req, res) => {
     res.json({ success: true, cover_path: filePath });
   } catch (error) {
     console.error('❌ Failed to upload cover:', error);
-    res.status(500).json({ error: 'Failed to upload cover' });
+    res.status(500).json({ error: 'Failed to upload cover', details: error.message });
   }
 });
 
@@ -315,7 +321,7 @@ router.post('/playlist_labels', async (req, res) => {
     res.json({ success: true });
   } catch (error) {
     console.error('❌ Failed to associate label with playlist:', error);
-    res.status(500).json({ error: 'Failed to associate label' });
+    res.status(500).json({ error: 'Failed to associate label', details: error.message });
   }
 });
 
@@ -344,7 +350,7 @@ router.delete('/playlist_labels', async (req, res) => {
     res.json({ success: true });
   } catch (error) {
     console.error('❌ Failed to remove label from playlist:', error);
-    res.status(500).json({ error: 'Failed to remove label' });
+    res.status(500).json({ error: 'Failed to remove label', details: error.message });
   }
 });
 
@@ -359,7 +365,7 @@ router.get('/playlist_labels/:playlist_id', async (req, res) => {
     res.json({ labels });
   } catch (error) {
     console.error('❌ Failed to fetch playlist labels:', error);
-    res.status(500).json({ error: 'Failed to fetch playlist labels' });
+    res.status(500).json({ error: 'Failed to fetch playlist labels', details: error.message });
   }
 });
 

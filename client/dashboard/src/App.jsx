@@ -1,4 +1,3 @@
-// App.jsx
 import { Routes, Route } from 'react-router-dom';
 import Sidebar from "./components/Sidebar";
 import AlbumGrid from "./components/AlbumGrid";
@@ -10,6 +9,7 @@ import PlayerFooter from "./components/PlayerFooter";
 import TimeWrapPage from "./components/TimeWrapPage";
 import LabelsPage from "./components/LabelsPage";
 import PlaylistsPage from "./components/PlaylistsPage";
+import PlaylistPage from "./components/PlaylistPage"; // New component
 import "./App.css";
 
 function App() {
@@ -26,6 +26,8 @@ function App() {
           <Route path="/timewrap" element={<TimeWrapPage />} />
           <Route path="/labels" element={<LabelsPage />} />
           <Route path="/playlists" element={<PlaylistsPage />} />
+          <Route path="/playlists/:id" element={<PlaylistPage />} />
+          <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
       </div>
       <PlayerFooter />
