@@ -1,2 +1,4 @@
 /music/
 /.env
+/server/static/placeholder-cover.jpg
+/server/sql/godspeed.db
